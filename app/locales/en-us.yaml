@@ -6,17 +6,36 @@ strings:
         cancel: Cancel
         search: Search
         clear: Clear
-        cleaning: Cleaning...
+        clearing: Cleaning...
         reset_password: Reset password
+        start: Start
+        stop: Stop
     switch:
         on: On
         off: Off
     dialog:
-        placeholder:
+        select_folder:
+            title: Select folder
+            placeholder: Folder path
+        password:
             password: Password
             confirm_password: Confirm password
+        new_model:
+            title: New model
+            placeholder: Model name
+        remove_model:
+            title: Remove this model?
+        not_implement:
+            title: Not implement
+            text: This feature is not implement. Please wait for further updates.
+    tagthumb:
+        item: '%ls item'
+        items: '%ls items'
+    taskitem:
+        preparing: 'Preparing...'
+        completed: 'Completed! %zu files processed'
     sort:
-        header: Sort options
+        header: Sort by
         ctime_desc: Recently created
         ctime_asc: Least recently created
         mtime_desc: Recently updated
@@ -28,6 +47,10 @@ strings:
         password_too_long: Password is too long
         password_empty: Password can not be empty
         passwords_not_match: Passwords not match
+        detector_init_failed: Detector initialization failed
+        creating_model: Creating model...
+        removing_model: Removing model...
+        clearing_cache: Clearing cache...
     datetime:
         format: 'DATE MM DD, YYYY hh:mm'
         year_format: MM YYYY
@@ -66,7 +89,7 @@ strings:
     search:
         title: Search
         placeholder:
-            search_input: 'search by tags, use spaces to separate tags.'
+            search_input: 'Search pictures'
         results: 
             title: Search results
         message:
@@ -95,6 +118,11 @@ strings:
                 input_tag: 'tag name, multiple tag names separated by space.'
             text:
                 delete_tag: 'Delete the %s tag ?'
+        labels:
+            title: Labels
+            labels: Labeled objects
+            add_label: Add label
+            available: Avilable labels
         info:
             title: File infomation
             file_name: Name
@@ -129,9 +157,29 @@ strings:
             title: Cache
             stats: 'Current thumbnail cache has used %s space.'
             description: >-
-                This application will automatically cache the thumbnail
+                We will automatically cache the thumbnail
                 when you browse the list of pictures, so that you can quickly
                 render thumbnail images in the next time you browse the pictures.
+        detector:
+            title: Detector
+            current_model:
+                title: Current used model
+                text: Select a model to change the detector's recognition speed, accuracy, and object classes set
+            models:
+                title: Pre-Trained Models
+                new_model: New model
+            model_classes: (%zu classes)
+            tasks:
+                title: Tasks
+                training:
+                    title: Training
+                    text: Learn the annotated pictures to enhanced detection capability
+                detection:
+                    title: Detection
+                    text: Detect objects in all images and label them
+        scaling:
+            title: Scaling
+            description: Set a suitable scaling to improve the visual experience of the user interface
         private_space:
             title: Private space
             sources_title: Private sources
@@ -159,6 +207,7 @@ strings:
         language: Language
         language_description: Change language
         license: License
+        privacy: Privacy
         website: Website
         feedback: Feedback
         sourcecode: Source code
@@ -169,4 +218,4 @@ strings:
                 title: Remove this source folder ?
                 content: This source folder's files related infomation will be remove.
         about: About
-        copyright: © 2017 LC's Software，All rights reserved.
+        copyright: © 2018 LC's Software，All rights reserved.

@@ -1,7 +1,7 @@
 ﻿/* ***************************************************************************
  * progressbar.c -- progressbar
  *
- * Copyright (C) 2016 by Liu Chao <lc-soft@live.cn>
+ * Copyright (C) 2016-2018 by Liu Chao <lc-soft@live.cn>
  *
  * This file is part of the LC-Finder project, and may only be used, modified,
  * and distributed under the terms of the GPLv2.
@@ -20,7 +20,7 @@
 /* ****************************************************************************
  * progressbar.c -- 进度条
  *
- * 版权所有 (C) 2016 归属于 刘超 <lc-soft@live.cn>
+ * 版权所有 (C) 2016-2018 归属于 刘超 <lc-soft@live.cn>
  *
  * 这个文件是 LC-Finder 项目的一部分，并且只可以根据GPLv2许可协议来使用、更改和
  * 发布。
@@ -37,12 +37,12 @@
 #ifndef LCFINDER_PROGRESSBAR_H
 #define LCFINDER_PROGRESSBAR_H
 
-void LCUIWidget_AddProgressBar( void );
+void LCUIWidget_AddProgressBar(void);
 
-void ProgressBar_Update( LCUI_Widget w );
+void ProgressBar_Update(LCUI_Widget w);
 
-void ProgressBar_SetValue( LCUI_Widget w, int value );
+void ProgressBar_SetValue(LCUI_Widget w, size_t value);
 
-void ProgressBar_SetMaxValue( LCUI_Widget w, int max_value );
+void ProgressBar_SetMaxValue(LCUI_Widget w, size_t max_value);
 
 #endif

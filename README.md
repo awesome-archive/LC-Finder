@@ -1,76 +1,77 @@
-# LC-Finder
+<p align="center">
+  <a href="http://lcfinder.lc-soft.io/">
+    <img src="https://lcfinder.lc-soft.io/static/images/logo-lcfinder.png" alt="" width=72 height=72>
+  </a>
+  <h3 align="center">LC's Finder</h3>
+  <p align="center">
+    Image annotation and object detection tool
+  </p>
+  <p align="center">
+    <a href="https://github.com/lc-soft/LC-Finder/actions"><img src="https://github.com/lc-soft/LC-Finder/workflows/C%2FC%2B%2B%20CI/badge.svg" alt="GitHub Actions"></a>
+    <a href="https://travis-ci.org/lc-soft/LC-Finder"><img src="https://travis-ci.org/lc-soft/LC-Finder.svg?branch=develop" alt="Build Status"></a>
+    <a href="https://opensource.org/licenses/GPL-2.0"><img src="https://img.shields.io/github/license/lc-soft/LC-Finder.svg" alt="License"></a>
+    <a href="https://github.com/lc-soft/LCUI/releases"><img src="https://img.shields.io/github/release/lc-soft/LC-Finder/all.svg" alt="Github Release"></a>
+    <a href="https://github.com/lc-soft/LCUI/releases"><img src="https://img.shields.io/github/downloads/lc-soft/LC-Finder/total.svg" alt="Github All Releases"></a>
+    <img src="https://img.shields.io/github/repo-size/lc-soft/LC-Finder.svg" alt="Repo size">
+    <img src="https://img.shields.io/github/languages/code-size/lc-soft/LC-Finder.svg" alt="Code size">
+  </p>
+</p>
 
-[![Join the chat at https://gitter.im/lc-soft/LC-Finder](https://badges.gitter.im/lc-soft/LC-Finder.svg)](https://gitter.im/lc-soft/LC-Finder?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Total downloads](https://img.shields.io/github/downloads/lc-soft/LC-Finder/total.svg)](https://github.com/lc-soft/LC-Finder/releases)
-[![License](https://img.shields.io/badge/license-GPLv2-blue.svg)](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+## Introduction
 
-一个图形化的图片资源检索与管理工具，主要使用 C 语言编写，基于 [GNU通用公共许可协议](http://www.gnu.org/licenses/gpl-2.0.html) 
-发布。
+[中文版](README.zh-cn.md)
 
-[![](https://lcui.lc-soft.io/static/images/showcase/lcfinder-001.jpg "效果图")](https://lcui.lc-soft.io/static/images/showcase/lcfinder-001.jpg)
-[![](https://lcui.lc-soft.io/static/images/showcase/lcfinder-004.jpg "效果图")](https://lcui.lc-soft.io/static/images/showcase/lcfinder-004.jpg)
+LCFinder (LC's Finder) is an image management tool that supports image annotation and object detection. It is written in C and uses [LCUI](https://github.com/lc-soft/LCUI) for its graphical interface. As with the author's other projects, the naming is simple, it begins with LC, and the following Finder is referenced from the Finder in Mac OS.
+
+LCFinder's user interface and feature design is based on the "photos" application that comes with Windows, Although it is a reference, the functional aspects are mainly developed according to the author's individual needs, and the author does not intend to waste time to implement all the functions of the "photo" application.
+
+### Features
+
+- **Image annotation:** Provides a simple GUI for marking bounded boxes of objects in images for training Yolo v3 and v2
+- **Object detection:** Built-in image detector, It can automatically annotate the detected objects in the images.
+- **Search by tags:** You can browse and search tagged images in the tags view
+- **Localization:** Support English, Simplified Chinese, Traditional Chinese, expandable support for other languages.
+- **Private space:** A password-protected space where you can hide non-public image sources
+- **UWP:** Support for Windows Universal Platform (UWP), you can [click this link](https://www.microsoft.com/store/apps/9NBLGGH401X5) to view it in the windows app store. Due to the development cost of the UWP version, it will not be updated with the desktop version.
+
+## Screenshots
+
+[![screenshot 1](screenshots/1.jpg "LCFinder")](screenshots/1.jpg)
+
+[![screenshot 1](screenshots/2.jpg "LCFinder")](screenshots/2.jpg)
+
+[![screenshot 1](screenshots/3.jpg "LCFinder")](screenshots/3.jpg)
+
+[![screenshot 1](screenshots/4.jpg "LCFinder")](screenshots/4.jpg)
+
+## Install
+
+If you want to use the detector, you need the following steps:
+
+1. Download pre-trained models:
+    - `yolov3.cfg` (236 MB COCO Yolo v3) - requires 4 GB GPU-RAM: https://pjreddie.com/media/files/yolov3.weights
+    - `yolov3-tiny.cfg` (34 MB COCO Yolo v3 tiny) - requires 1 GB GPU-RAM: https://pjreddie.com/media/files/yolov3-tiny.weights
+    - `yolo9000.cfg` (186 MB Yolo9000-model) - requires 4 GB GPU-RAM: http://pjreddie.com/media/files/yolo9000.weights
+1. Copy the `.weights` file to its namesake directory in the `app/detector/models` directory, such as: copy `yolov3.weights` file to `app/detector/models/yolov3/`
+
+## Contributing
+
+If you are interested in fixing issues and contributing directly to the code base, please see the [contributing guidelines](CONTRIBUTING.md), which covers the following:
+
+- [How to build and run from source](CONTRIBUTING.md#build-and-run)
+- [Project Structure](CONTRIBUTING.md#project-structure)
+- [Submitting pull requests](CONTRIBUTING.md#pull-requests)
+- [Contributing to translations](CONTRIBUTING.md#translations)
+
+## Related Projects
+
+The development of LCFinder is inseparable from the support of these projects:
+
+- [LCUI](https://github.com/lc-soft/LCUI) — UI engine, provide graphical user interface support
+- [LCUI.css](https://github.com/lc-ui/lcui.css) — UI component library, provides basic styles and components for the graphical user interface
+- [darknetlib](https://github.com/lc-soft/darknetlib) — C bindings for [darknet](http://pjreddie.com/darknet/), provide image recognition support
 
 
-## 功能及特性
+## License
 
-- 缩略图预览
-- 文件夹浏览
-- 图片查看器
-- 标签搜索
-- 触控支持
-- 多语言支持
-- 支持 Windows 通用应用平台（UWP）
-
-
-## 目录结构
-
-``` text
-UWP              针对 UWP 平台的相关源代码及文件
-app              应用程序目录，编译生成后的最终文件都会输出到这里
-  assets         应用程序资源文件
-    views        视图描述文件
-    stylesheets  界面样式
-  locales        用于本地化的语言翻译文件
-config           相关配置
-include          头文件
-src              源代码
-  lib            基础功能库
-  scss           SCSS 文件，包含了界面样式
-    common       常用样式
-      iconfont   图标样式
-    componets    界面组件样式
-    themes       主题样式
-    views        视图样式
-  ui             界面相关逻辑的实现代码
-    views        视图控制器
-    widgets      界面组件
-vendor           第三方依赖文件
-```
-
-## 构建
-
-### Windows
-
-使用 VisualStudio 打开 `LC-Finder.sln` 文件，然后在界面顶部的菜单栏中选择 生成 -> 生成解决方案，成功生成后运行 app 目录下 `LC-Finder.exe`。
-
-### Linux
-目前已经暂停对 Linux 的支持，如有需要可向 [LCUI](https://github.com/lc-soft/LCUI) 项目提供 Linux 端的支持方案。
-
-运行以下命令：
-
-	./setup.sh
-	./build.sh
-
-`setup.sh` 脚本会下载在构建 LC-Finder 时所需的工具以及相关依赖项，只需要运行一次即可。
-
-在成功生成后，可以直接输入 `app/lc-finder` 命令行来运行本程序。
-
-### 依赖项
-
-以下依赖项都是必需的。
-
- * [LCUI](https://lcui.lc-soft.io) — 作者写的一个图形界面引擎，为本程序提供图形界面支持。
- * [sqlite3](https://www.sqlite.org/) — 轻量级的关系型数据库引擎，为文件信息索引与搜索功能提供支持。
- * [unqlite](https://www.unqlite.org/) — 嵌入式的非关系型数据引擎，为缩略图缓存功能提供支持。
- 
-通常 Github 上的 Releases 页面中会提供包含这些依赖库及头文件的压缩包，因此你不用再手动去编译这些依赖库。
+Licensed under the  [GPL License](https://opensource.org/licenses/GPL-2.0).

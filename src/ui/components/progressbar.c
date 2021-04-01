@@ -1,7 +1,7 @@
 ﻿/* ***************************************************************************
  * progressbar.c -- progressbar
  *
- * Copyright (C) 2016 by Liu Chao <lc-soft@live.cn>
+ * Copyright (C) 2016-2018 by Liu Chao <lc-soft@live.cn>
  *
  * This file is part of the LC-Finder project, and may only be used, modified,
  * and distributed under the terms of the GPLv2.
@@ -20,7 +20,7 @@
 /* ****************************************************************************
  * progressbar.c -- 进度条
  *
- * 版权所有 (C) 2016 归属于 刘超 <lc-soft@live.cn>
+ * 版权所有 (C) 2016-2018 归属于 刘超 <lc-soft@live.cn>
  *
  * 这个文件是 LC-Finder 项目的一部分，并且只可以根据GPLv2许可协议来使用、更改和
  * 发布。
@@ -40,57 +40,58 @@
 #include <LCUI/gui/widget/textview.h>
 
 typedef struct ProgressRec_ {
-	int value;
-	int max_value;
+	size_t value;
+	size_t max_value;
 	LCUI_Widget bar;
 } ProgressRec, *Progress;
 
 static LCUI_WidgetPrototype prototype = NULL;
 
-static void Progress_OnInit( LCUI_Widget w )
+static void Progress_OnInit(LCUI_Widget w)
 {
 	Progress data;
-	const size_t data_size = sizeof( ProgressRec );
-	data = Widget_AddData( w, prototype, data_size );
-	data->bar = LCUIWidget_New( "progressbar" );
+	const size_t data_size = sizeof(ProgressRec);
+
+	data = Widget_AddData(w, prototype, data_size);
+	data->bar = LCUIWidget_New("progressbar");
 	data->max_value = 100;
 	data->value = 0;
-	Widget_Append( w, data->bar );
+	Widget_Append(w, data->bar);
 }
 
-void ProgressBar_Update( LCUI_Widget w )
+void ProgressBar_Update(LCUI_Widget w)
 {
-	Progress self = Widget_GetData( w, prototype );
+	Progress self = Widget_GetData(w, prototype);
 	float n = (float)(1.0 * self->value / self->max_value);
-	SetStyle( self->bar->custom_style, key_width, n, scale );
-	Widget_UpdateStyle( self->bar, FALSE );
+	Widget_SetStyle(self->bar, key_width, n, scale);
+	Widget_UpdateStyle(self->bar, TRUE);
 }
 
-void ProgressBar_SetValue( LCUI_Widget w, int value )
+void ProgressBar_SetValue(LCUI_Widget w, size_t value)
 {
-	Progress self = Widget_GetData( w, prototype );
+	Progress self = Widget_GetData(w, prototype);
 	self->value = value;
-	if( self->value > self->max_value ) {
+	if (self->value > self->max_value) {
 		self->value = self->max_value;
 	}
-	ProgressBar_Update( w );
+	ProgressBar_Update(w);
 }
 
-void ProgressBar_SetMaxValue( LCUI_Widget w, int max_value )
+void ProgressBar_SetMaxValue(LCUI_Widget w, size_t max_value)
 {
-	Progress self = Widget_GetData( w, prototype );
-	if( max_value <= 0 ) {
+	Progress self = Widget_GetData(w, prototype);
+	if (max_value <= 0) {
 		return;
 	}
 	self->max_value = max_value;
-	if( self->value > self->max_value ) {
+	if (self->value > self->max_value) {
 		self->value = self->max_value;
 	}
-	ProgressBar_Update( w );
+	ProgressBar_Update(w);
 }
 
-void LCUIWidget_AddProgressBar( void )
+void LCUIWidget_AddProgressBar(void)
 {
-	prototype = LCUIWidget_NewPrototype( "progress", NULL );
+	prototype = LCUIWidget_NewPrototype("progress", NULL);
 	prototype->init = Progress_OnInit;
 }
